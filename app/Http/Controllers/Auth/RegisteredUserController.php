@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Events\UserCreated;
+use App\Events\UserRegistration;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\RegisterRequest;
 use App\Mail\SentPassword;
@@ -45,7 +47,7 @@ class RegisteredUserController extends Controller
 
         event(new Registered($user));
 
-        Mail::to($user)->send(new SentPassword($password));
+        event(new UserRegistration($user, $password));
 
         Auth::login($user);
 

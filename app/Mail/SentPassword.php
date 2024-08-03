@@ -14,7 +14,7 @@ class SentPassword extends Mailable
     use Queueable, SerializesModels;
 
 
-    public $password; // string ли?
+    public $password;
 
     /**
      * Create a new message instance.

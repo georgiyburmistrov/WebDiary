@@ -41,6 +41,7 @@ class User extends Authenticatable
         'address',
         'email',
         'password',
+        'role',
     ];
 
     /**
@@ -101,6 +102,14 @@ class User extends Authenticatable
             get: function() {
                 return is_null($this->address) ? '-' : implode(', ', $this->address);
             },
+            set: function($value) {
+                return json_encode([
+                    'city' => ucfirst($value['city']),
+                    ''
+                ]);
+            }
+            // здесь написать мутатор. Для удобства лучше переименовать функцию в address()
+
         );
     }
 
